@@ -98,7 +98,7 @@ A system supporting toll collections with an add-on for notifications e.g., dete
 ![Toll Registry Step Functions Workflow](images/toll-registry-sf.png)
 
 ### Remarks
-- To facilitate grasping how the entire solution works, the demo app has been:
+- To facilitate grasping how the entire solution works, the app has been:
   - Simplified to the maximum
     - Also the microservice APIs have been reduced to the minimum
   - Devoid of:
