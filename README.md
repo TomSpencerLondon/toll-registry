@@ -3,33 +3,34 @@
 ## The business need
 A system supporting toll collections with an add-on for notifications e.g., detecting a stolen vehicle based on registration number recognition
 
-## Reasons to change the present solution
-- The current solution does not meet expectations for high availability
+## Reasons to change the legacy solution
+- The legacy solution did not meet expectations for high availability
   - Frequent interruptions in operation cause measurable financial losses
 - Performance and scalability issues
-  - The relational database makes up the bottleneck of the system as a whole
-- The monolithic structure of the app impedes effective and efficient scaling (out and in)
-- The OCR module generates incorrect readings of registration numbers
-  - Error-prone identification of vehicles incurs high administrative costs
+  - The relational database made up the bottleneck of the system as a whole
+- The monolithic structure of the app impeded effective and efficient scaling (out and in)
+- The OCR module generated incorrect readings of registration numbers
+  - Error-prone identification of vehicles incurred high administrative costs
     - Due to manual procedures and human effort to handle hundreds of complaints per month
 - The obsolete library for metadata extraction
-  - The code is no longer developed and updated – as a result, it has become vulnerable
+  - The code was no longer developed and updated – as a result, it has become vulnerable
 - The limited reuse capability of OCR and notification modules
-  - The module code is firmly embedded in the application monolith
-  - The copy/paste method is used as a temporary workaround
-  - As a result, there are problems with the code integrity and its maintenance
-    - Where is the appropriate code repository, or "source of truth"?
+  - The module code was firmly embedded in the application monolith
+  - The copy/paste method was used as a temporary workaround
+  - As a result, there were huge problems with the code integrity and its maintenance
+    - Where was the appropriate code repository, or "source of truth"?
 
-## The current app structure – typical monolith
+## The legacy app structure – typical monolith
+![Legacy App Architecture](images/legacy.png)
 
-## Functional requirements
+## Functional requirements of the new solution
 - Store photos of license plates
 - Identify and read out the plate registration numbers in real-time
 - Save data from the photos (including EXIF metadata) in a database
 - Search for stolen vehicle numbers
 - Send notifications about occurring events
 
-## Non-functional requirements
+## Non-functional requirements for a new cloud-based system
 - The system is to be:
   - Highly-available
   - Scalable
@@ -40,9 +41,9 @@ A system supporting toll collections with an add-on for notifications e.g., dete
 - The solution should characterize:
   - Low personnel costs as to system maintenance, operation, and administration
 
-## Architecture
+## Architecture - a new cloud-driven approach
 
-### Major architectural decisions
+### Major architectural decisions - turning to Cloud
 
 - The AWS Cloud as a runtime environment
 - Justification:
@@ -61,7 +62,7 @@ A system supporting toll collections with an add-on for notifications e.g., dete
 ### Microservice architecture
 ![Toll Registry Microservice Architecture](images/microservices.png)
 
-### AWS multi-account architecture
+### The AWS multi-account architecture
 ![Toll Registry AWS Multi-Account Architecture](images/multi-account.png)
 
 ### Microservices on AWS as AWS Lambda
@@ -83,7 +84,7 @@ A system supporting toll collections with an add-on for notifications e.g., dete
 
 ![Leveraged AWS Services](images/aws-service-list.png)
 
-### Microservices included the workflow:
+### Microservices included in the data flow:
 
 - [Data collection service](https://github.com/developing-cloud/data-collection)
 - [OCR service](https://github.com/developing-cloud/ocr)
