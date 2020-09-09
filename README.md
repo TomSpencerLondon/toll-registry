@@ -20,16 +20,16 @@ A system supporting toll collections with an add-on for notifications e.g., dete
   - As a result, there are problems with the code integrity and its maintenance
     - Where is the appropriate code repository, or "source of truth"?
 
-# The current app structure – typical monolith
+## The current app structure – typical monolith
 
-# Functional requirements
+## Functional requirements
 - Store photos of license plates
 - Identify and read out the plate registration numbers in real-time
 - Save data from the photos (including EXIF metadata) in a database
 - Search for stolen vehicle numbers
 - Send notifications about occurring events
 
-# Non-functional requirements
+## Non-functional requirements
 - The system is to be:
   - Highly-available
   - Scalable
@@ -40,9 +40,9 @@ A system supporting toll collections with an add-on for notifications e.g., dete
 - The solution should characterize:
   - Low personnel costs as to system maintenance, operation, and administration
 
-# Architecture
+## Architecture
 
-## Major architectural decisions
+### Major architectural decisions
 
 - The AWS Cloud as a runtime environment
 - Justification:
@@ -58,16 +58,16 @@ A system supporting toll collections with an add-on for notifications e.g., dete
 - The application structure as microservices with their "light", scalable instances driven by a data flow manager 
 - The entire AWS infrastructure, service, resource, application and CI/CD setup is accomplished with IaC (Infrastructure As Code) approach 
 
-## Microservice architecture
+### Microservice architecture
 ![Toll Registry Microservice Architecture](images/microservices.png)
 
-## AWS multi-account architecture
-![Toll Registry Application Architecture](images/toll-registry-arch.png)
-
-## Microservices on AWS as AWS Lambda
+### AWS multi-account architecture
 ![Toll Registry AWS Multi-Account Architecture](images/multi-account.png)
 
-## Caveats & exclusions
+### Microservices on AWS as AWS Lambda
+![Toll Registry Application Architecture](images/toll-registry-arch.png)
+
+### Caveats & exclusions
 - The architecture shown here doesn't include the part of the system responsible for:
   - Authentication and authorization (AuthN/Z)
   - Steering cameras over MQTT (IoT)
@@ -77,13 +77,13 @@ A system supporting toll collections with an add-on for notifications e.g., dete
   - In the Cloud version by:
     - Amazon Cognito, IAM, and AWS IoT Core
 
-# Implementation
+## Implementation
 
-## The leveraged AWS services
+### The leveraged AWS services
 
 ![Leveraged AWS Services](images/aws-service-list.png)
 
-## Microservices included the workflow:
+### Microservices included the workflow:
 
 - [Data collection service](https://github.com/developing-cloud/data-collection)
 - [OCR service](https://github.com/developing-cloud/ocr)
@@ -92,11 +92,11 @@ A system supporting toll collections with an add-on for notifications e.g., dete
 - [Notification service](https://github.com/developing-cloud/notifier)
 - [Stolen vehicles search service](https://github.com/developing-cloud/vehicle-finder)
 
-## Step Functions as a backbone of the application 
+### Step Functions as a backbone of the application 
 
 ![Toll Registry Step Functions Workflow](images/toll-registry-sf.png)
 
-## Remarks
+### Remarks
 - To facilitate grasping how the entire solution works, the demo app has been:
   - Simplified to the maximum
     - Also the microservice APIs have been reduced to the minimum
@@ -109,10 +109,10 @@ A system supporting toll collections with an add-on for notifications e.g., dete
     - Entirely described as simple executable code, including configuration and setup
 
 
-# The DevOps approach
-## CI/CD
+## The DevOps approach
+### CI/CD
 
-AWS CodeCommit as a code repository
+AWS CodeCommit is leveraged as a code repository.
 ![CodeCommit](images/code-commit.png)
 
 AWS CodePipeline with CodeBuild and CloudFormation for CI/CD implementation.
