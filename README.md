@@ -118,7 +118,7 @@ A system supporting toll collections with an add-on for notifications e.g., dete
 AWS CodeCommit is leveraged as a code repository.
 ![CodeCommit](images/code-commit.png)
 
-AWS CodePipeline with CodeBuild and CloudFormation for CI/CD implementation.
+AWS CodePipeline with CodeBuild and CloudFormation for continous delivey/deployment implementation.
 ![CodeCommit](images/code-pipeline.png)
 
 ### Setup
