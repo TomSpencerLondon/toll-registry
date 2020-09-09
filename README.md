@@ -1,4 +1,4 @@
-# Toll-Registry application
+# Toll-Registry - a cloud-native application
 
 ## The business need
 A system supporting toll collections with an add-on for notifications e.g., detecting a stolen vehicle based on registration number recognition
