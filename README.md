@@ -5,7 +5,7 @@ A system supporting toll collections with an add-on for notifications e.g., dete
 
 ## Reasons to change the legacy solution
 - The legacy solution did not meet expectations for high availability
-  - Frequent interruptions in operation cause measurable financial losses
+  - Frequent interruptions in operation caused measurable financial losses
 - Performance and scalability issues
   - The relational database made up the bottleneck of the system as a whole
 - The monolithic structure of the app impeded effective and efficient scaling (out and in)
@@ -113,6 +113,8 @@ A system supporting toll collections with an add-on for notifications e.g., dete
 ## The DevOps approach
 ### CI/CD
 
+![Toll Registry CI/CD](images/ci-cd.png)
+
 AWS CodeCommit is leveraged as a code repository.
 ![CodeCommit](images/code-commit.png)
 
@@ -124,13 +126,11 @@ CDK is used for setting up the CI/CD pipelines.
 The project [Tools](https://github.com/developing-cloud/tools)
  comprises the entire configuration needed to set it up from scratch.
 
-![Toll Registry CI/CD](images/ci-cd.png)
+![Change Mamagement by IaC](images/iac.png)
 
 ### Maintenance
 CDK is leveraged for the CI/CD pipelines maintenance.
 Any changes to the pipelines should be applied with CDK.
-
-![Change Mamagement by IaC](images/iac.png)
 
 ## Monitoring
 - CloudWatch with standard metrics
